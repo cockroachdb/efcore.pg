@@ -15,7 +15,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
         {
             base.OnModelCreating(modelBuilder, context);
 
-            modelBuilder.HasPostgresExtension("uuid-ossp");
+            // modelBuilder.HasPostgresExtension("uuid-ossp");
             //modelBuilder.Entity<Mission>().Ignore(m => m.Timeline);
         }
 

@@ -282,7 +282,7 @@ SELECT
   CASE WHEN pg_proc.proname='array_recv' THEN elemtyp.typname END AS elemtypname,
   NOT (attnotnull OR typ.typnotnull) AS nullable,
   CASE
-    WHEN atthasdef THEN (SELECT pg_get_expr(adbin, cls.oid) FROM pg_attrdef WHERE adrelid = cls.oid AND adnum = attr.attnum)
+    WHEN atthasdef THEN pg_get_expr(attrdef.adbin, cls.oid)
   END AS default,
 
   -- Sequence options for identity columns
@@ -293,6 +293,7 @@ SELECT
 FROM pg_class AS cls
 JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
 LEFT JOIN pg_attribute AS attr ON attrelid = cls.oid
+LEFT JOIN pg_attrdef attrdef ON adrelid = cls.oid and adnum = attr.attnum
 LEFT JOIN pg_type AS typ ON attr.atttypid = typ.oid
 LEFT JOIN pg_proc ON pg_proc.oid = typ.typreceive
 LEFT JOIN pg_type AS elemtyp ON (elemtyp.oid = typ.typelem)
@@ -499,7 +500,7 @@ SELECT
   idxcls.relname AS idx_relname,
   indisunique,
   {(connection.PostgreSqlVersion >= new Version(11, 0) ? "indnkeyatts" : "indnatts AS indnkeyatts")},
-  {(connection.PostgreSqlVersion >= new Version(9, 6) ? "pg_indexam_has_property(am.oid, 'can_order') as amcanorder" : "amcanorder")},
+  amcanorder,
   indkey,
   amname,
   indclass,

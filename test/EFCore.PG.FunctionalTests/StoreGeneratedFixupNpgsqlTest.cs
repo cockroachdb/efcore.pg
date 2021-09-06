@@ -75,8 +75,6 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL
             {
                 base.OnModelCreating(modelBuilder, context);
 
-                modelBuilder.HasPostgresExtension("uuid-ossp");
-
                 modelBuilder.Entity<Parent>(
                     b =>
                         {

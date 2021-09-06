@@ -19,6 +19,10 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             Fixture.TestSqlLoggerFactory.SetTestOutputHelper(testOutputHelper);
         }
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/19")]
+        public override Task Contains_on_byte_array_property_using_byte_column(bool async) => base.Contains_on_byte_array_property_using_byte_column(async);
+
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/19")]
         public override async Task Byte_array_contains_literal(bool async)
         {
             await base.Byte_array_contains_literal(async);
@@ -29,6 +33,7 @@ FROM ""Squads"" AS s
 WHERE position(BYTEA E'\\x01' IN s.""Banner"") > 0");
         }
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/19")]
         public override async Task Byte_array_contains_parameter(bool async)
         {
             await base.Byte_array_contains_parameter(async);
@@ -140,6 +145,7 @@ WHERE length(s.""Banner"") = length(@__byteArrayParam)");
 
         #region TimeSpan
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/1")]
         public override async Task TimeSpan_Hours(bool async)
         {
             await base.TimeSpan_Hours(async);
@@ -149,6 +155,7 @@ WHERE length(s.""Banner"") = length(@__byteArrayParam)");
 FROM ""Missions"" AS m");
         }
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/1")]
         public override async Task TimeSpan_Minutes(bool async)
         {
             await base.TimeSpan_Minutes(async);
@@ -158,6 +165,7 @@ FROM ""Missions"" AS m");
 FROM ""Missions"" AS m");
         }
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/1")]
         public override async Task TimeSpan_Seconds(bool async)
         {
             await base.TimeSpan_Seconds(async);
@@ -167,6 +175,7 @@ FROM ""Missions"" AS m");
 FROM ""Missions"" AS m");
         }
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/1")]
         public override async Task TimeSpan_Milliseconds(bool async)
         {
             await base.TimeSpan_Milliseconds(async);
@@ -180,6 +189,7 @@ FROM ""Missions"" AS m");
         public override Task Where_TimeSpan_Hours(bool async)
             => Task.CompletedTask;
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/1")]
         public override async Task Where_TimeSpan_Minutes(bool async)
         {
             await base.Where_TimeSpan_Minutes(async);
@@ -190,6 +200,7 @@ FROM ""Missions"" AS m
 WHERE floor(date_part('minute', m.""Duration""))::INT = 1");
         }
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/1")]
         public override async Task Where_TimeSpan_Seconds(bool async)
         {
             await base.Where_TimeSpan_Seconds(async);
@@ -200,6 +211,7 @@ FROM ""Missions"" AS m
 WHERE floor(date_part('second', m.""Duration""))::INT = 1");
         }
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/1")]
         public override async Task Where_TimeSpan_Milliseconds(bool async)
         {
             await base.Where_TimeSpan_Milliseconds(async);

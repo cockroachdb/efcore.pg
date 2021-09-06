@@ -29,7 +29,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
 
         #region FunctionTests
 
-        [Fact]
+        [Fact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         public void TrigramsShow()
         {
             using var context = CreateContext();
@@ -40,7 +40,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"show_trgm(t.""Text"")");
         }
 
-        [Fact]
+        [Fact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         public void TrigramsSimilarity()
         {
             using var context = CreateContext();
@@ -51,7 +51,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"similarity(t.""Text"", 'target')");
         }
 
-        [Fact]
+        [Fact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         public void TrigramsWordSimilarity()
         {
             using var context = CreateContext();
@@ -62,7 +62,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"word_similarity(t.""Text"", 'target')");
         }
 
-        [ConditionalFact]
+        [ConditionalFact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         [MinimumPostgresVersion(11, 0)]
         public void TrigramsStrictWordSimilarity()
         {
@@ -74,7 +74,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"strict_word_similarity(t.""Text"", 'target')");
         }
 
-        [Fact]
+        [Fact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         public void TrigramsAreSimilar()
         {
             using var context = CreateContext();
@@ -85,7 +85,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"t.""Text"" % 'target'");
         }
 
-        [Fact]
+        [Fact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         public void TrigramsAreWordSimilar()
         {
             using var context = CreateContext();
@@ -96,7 +96,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"t.""Text"" <% 'target'");
         }
 
-        [Fact]
+        [Fact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         public void TrigramsAreNotWordSimilar()
         {
             using var context = CreateContext();
@@ -107,7 +107,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"t.""Text"" %> 'target'");
         }
 
-        [ConditionalFact]
+        [ConditionalFact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         [MinimumPostgresVersion(11, 0)]
         public void TrigramsAreStrictWordSimilar()
         {
@@ -119,7 +119,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"t.""Text"" <<% 'target'");
         }
 
-        [ConditionalFact]
+        [ConditionalFact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         [MinimumPostgresVersion(11, 0)]
         public void TrigramsAreNotStrictWordSimilar()
         {
@@ -131,7 +131,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"t.""Text"" %>> 'target'");
         }
 
-        [Fact]
+        [Fact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         public void TrigramsSimilarityDistance()
         {
             using var context = CreateContext();
@@ -142,7 +142,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"t.""Text"" <-> 'target'");
         }
 
-        [Fact]
+        [Fact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         public void TrigramsWordSimilarityDistance()
         {
             using var context = CreateContext();
@@ -153,7 +153,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"t.""Text"" <<-> 'target'");
         }
 
-        [Fact]
+        [Fact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         public void TrigramsWordSimilarityDistanceInverted()
         {
             using var context = CreateContext();
@@ -164,7 +164,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"t.""Text"" <->> 'target'");
         }
 
-        [ConditionalFact]
+        [ConditionalFact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         [MinimumPostgresVersion(11, 0)]
         public void TrigramsStrictWordSimilarityDistance()
         {
@@ -176,7 +176,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"t.""Text"" <<<-> 'target'");
         }
 
-        [ConditionalFact]
+        [ConditionalFact (Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/24")]
         [MinimumPostgresVersion(11, 0)]
         public void TrigramsStrictWordSimilarityDistanceInverted()
         {

@@ -110,7 +110,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
         /// <summary>
         /// Test that comparisons are treated correctly.
         /// </summary>
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/31")]
         public void Test_change_tracking_key_sizes()
         {
             Fixture.ClearEntities();

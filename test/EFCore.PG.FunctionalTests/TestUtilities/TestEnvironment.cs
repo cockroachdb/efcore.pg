@@ -22,7 +22,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.TestUtilities
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
         }
 
-        const string DefaultConnectionString = "Server=localhost;Username=npgsql_tests;Password=npgsql_tests";
+        const string DefaultConnectionString = "Server=localhost;Port=26257Username=root;";
 
         public static string DefaultConnection => Config["DefaultConnection"] ?? DefaultConnectionString;
 
@@ -34,7 +34,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.TestUtilities
             {
                 if (_postgresVersion != null)
                     return _postgresVersion;
-                using var conn = new NpgsqlConnection(NpgsqlTestStore.CreateConnectionString("postgres"));
+                using var conn = new NpgsqlConnection(NpgsqlTestStore.CreateConnectionString("defaultdb"));
                 conn.Open();
                 return _postgresVersion = conn.PostgreSqlVersion;
             }

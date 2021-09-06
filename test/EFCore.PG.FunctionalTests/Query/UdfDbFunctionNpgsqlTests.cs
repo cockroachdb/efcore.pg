@@ -22,7 +22,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
 
         #region Static
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Extension_Method_Static()
         {
             base.Scalar_Function_Extension_Method_Static();
@@ -33,7 +33,7 @@ FROM ""Customers"" AS c
 WHERE ""IsDate""(c.""FirstName"") = FALSE");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_With_Translator_Translates_Static()
         {
             base.Scalar_Function_With_Translator_Translates_Static();
@@ -47,11 +47,11 @@ WHERE c.""Id"" = @__customerId_0
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_ClientEval_Method_As_Translateable_Method_Parameter_Static()
             => base.Scalar_Function_ClientEval_Method_As_Translateable_Method_Parameter_Static();
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Constant_Parameter_Static()
         {
             base.Scalar_Function_Constant_Parameter_Static();
@@ -63,7 +63,7 @@ SELECT ""CustomerOrderCount""(@__customerId_0)
 FROM ""Customers"" AS c");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Anonymous_Type_Select_Correlated_Static()
         {
             base.Scalar_Function_Anonymous_Type_Select_Correlated_Static();
@@ -75,7 +75,7 @@ WHERE c.""Id"" = 1
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Anonymous_Type_Select_Not_Correlated_Static()
         {
             base.Scalar_Function_Anonymous_Type_Select_Not_Correlated_Static();
@@ -87,7 +87,7 @@ WHERE c.""Id"" = 1
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Anonymous_Type_Select_Parameter_Static()
         {
             base.Scalar_Function_Anonymous_Type_Select_Parameter_Static();
@@ -101,7 +101,7 @@ WHERE c.""Id"" = @__customerId_0
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Anonymous_Type_Select_Nested_Static()
         {
             base.Scalar_Function_Anonymous_Type_Select_Nested_Static();
@@ -116,7 +116,7 @@ WHERE c.""Id"" = @__customerId_0
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Where_Correlated_Static()
         {
             base.Scalar_Function_Where_Correlated_Static();
@@ -127,7 +127,7 @@ FROM ""Customers"" AS c
 WHERE ""IsTopCustomer""(c.""Id"")");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Where_Not_Correlated_Static()
         {
             base.Scalar_Function_Where_Not_Correlated_Static();
@@ -141,7 +141,7 @@ WHERE ""GetCustomerWithMostOrdersAfterDate""(@__startDate_0) = c.""Id""
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Where_Parameter_Static()
         {
             base.Scalar_Function_Where_Parameter_Static();
@@ -155,7 +155,7 @@ WHERE c.""Id"" = ""GetCustomerWithMostOrdersAfterDate""(""GetReportingPeriodStar
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Where_Nested_Static()
         {
             base.Scalar_Function_Where_Nested_Static();
@@ -167,7 +167,7 @@ WHERE c.""Id"" = ""GetCustomerWithMostOrdersAfterDate""(""GetReportingPeriodStar
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Let_Correlated_Static()
         {
             base.Scalar_Function_Let_Correlated_Static();
@@ -179,7 +179,7 @@ WHERE c.""Id"" = 2
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Let_Not_Correlated_Static()
         {
             base.Scalar_Function_Let_Not_Correlated_Static();
@@ -191,7 +191,7 @@ WHERE c.""Id"" = 2
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Let_Not_Parameter_Static()
         {
             base.Scalar_Function_Let_Not_Parameter_Static();
@@ -205,7 +205,7 @@ WHERE c.""Id"" = @__customerId_0
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Let_Nested_Static()
         {
             base.Scalar_Function_Let_Nested_Static();
@@ -240,7 +240,7 @@ FROM ""Customers"" AS c");
 FROM ""Customers"" AS c");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Nested_Function_Unwind_Client_Eval_Select_Static()
         {
             base.Scalar_Nested_Function_Unwind_Client_Eval_Select_Static();
@@ -341,7 +341,7 @@ FROM ""Customers"" AS c");
 FROM ""Customers"" AS c");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Nested_Function_BCL_UDF_Static()
         {
             base.Scalar_Nested_Function_BCL_UDF_Static();
@@ -363,7 +363,7 @@ LIMIT 2");
 FROM ""Customers"" AS c");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Nested_Function_UDF_BCL_Static()
         {
             base.Scalar_Nested_Function_UDF_BCL_Static();
@@ -375,7 +375,7 @@ WHERE 3 = ""CustomerOrderCount""(abs(c.""Id""))
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Nullable_navigation_property_access_preserves_schema_for_sql_function()
         {
             base.Nullable_navigation_property_access_preserves_schema_for_sql_function();
@@ -388,11 +388,26 @@ ORDER BY o.""Id""
 LIMIT 1");
         }
 
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void Compare_function_without_null_propagation_to_null() => base.Compare_function_without_null_propagation_to_null();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void Compare_function_with_null_propagation_to_null() => base.Compare_function_with_null_propagation_to_null();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void Compare_non_nullable_function_to_null_gets_optimized() => base.Compare_non_nullable_function_to_null_gets_optimized();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void Compare_functions_returning_int_that_take_nullable_param_which_propagates_null() => base.Compare_functions_returning_int_that_take_nullable_param_which_propagates_null();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void Scalar_Function_SqlFragment_Static() => base.Scalar_Function_SqlFragment_Static();
+
         #endregion
 
         #region Instance
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Non_Static()
         {
             base.Scalar_Function_Non_Static();
@@ -404,7 +419,7 @@ WHERE c.""Id"" = 1
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Extension_Method_Instance()
         {
             base.Scalar_Function_Extension_Method_Instance();
@@ -415,7 +430,7 @@ FROM ""Customers"" AS c
 WHERE ""IsDate""(c.""FirstName"") = FALSE");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_With_Translator_Translates_Instance()
         {
             base.Scalar_Function_With_Translator_Translates_Instance();
@@ -429,7 +444,10 @@ WHERE c.""Id"" = @__customerId_0
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void Scalar_Function_ClientEval_Method_As_Translateable_Method_Parameter_Instance() => base.Scalar_Function_ClientEval_Method_As_Translateable_Method_Parameter_Instance();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Constant_Parameter_Instance()
         {
             base.Scalar_Function_Constant_Parameter_Instance();
@@ -441,7 +459,7 @@ SELECT ""CustomerOrderCount""(@__customerId_1)
 FROM ""Customers"" AS c");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Anonymous_Type_Select_Correlated_Instance()
         {
             base.Scalar_Function_Anonymous_Type_Select_Correlated_Instance();
@@ -453,7 +471,7 @@ WHERE c.""Id"" = 1
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Anonymous_Type_Select_Not_Correlated_Instance()
         {
             base.Scalar_Function_Anonymous_Type_Select_Not_Correlated_Instance();
@@ -465,7 +483,7 @@ WHERE c.""Id"" = 1
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Anonymous_Type_Select_Parameter_Instance()
         {
             base.Scalar_Function_Anonymous_Type_Select_Parameter_Instance();
@@ -479,7 +497,7 @@ WHERE c.""Id"" = @__customerId_0
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Anonymous_Type_Select_Nested_Instance()
         {
             base.Scalar_Function_Anonymous_Type_Select_Nested_Instance();
@@ -494,7 +512,7 @@ WHERE c.""Id"" = @__customerId_0
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Where_Correlated_Instance()
         {
             base.Scalar_Function_Where_Correlated_Instance();
@@ -505,7 +523,7 @@ FROM ""Customers"" AS c
 WHERE ""IsTopCustomer""(c.""Id"")");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Where_Not_Correlated_Instance()
         {
             base.Scalar_Function_Where_Not_Correlated_Instance();
@@ -519,7 +537,7 @@ WHERE ""GetCustomerWithMostOrdersAfterDate""(@__startDate_1) = c.""Id""
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Where_Parameter_Instance()
         {
             base.Scalar_Function_Where_Parameter_Instance();
@@ -533,7 +551,7 @@ WHERE c.""Id"" = ""GetCustomerWithMostOrdersAfterDate""(""GetReportingPeriodStar
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Where_Nested_Instance()
         {
             base.Scalar_Function_Where_Nested_Instance();
@@ -545,7 +563,7 @@ WHERE c.""Id"" = ""GetCustomerWithMostOrdersAfterDate""(""GetReportingPeriodStar
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Let_Correlated_Instance()
         {
             base.Scalar_Function_Let_Correlated_Instance();
@@ -557,7 +575,7 @@ WHERE c.""Id"" = 2
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Let_Not_Correlated_Instance()
         {
             base.Scalar_Function_Let_Not_Correlated_Instance();
@@ -569,7 +587,7 @@ WHERE c.""Id"" = 2
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Let_Not_Parameter_Instance()
         {
             base.Scalar_Function_Let_Not_Parameter_Instance();
@@ -583,7 +601,7 @@ WHERE c.""Id"" = @__customerId_1
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Function_Let_Nested_Instance()
         {
             base.Scalar_Function_Let_Nested_Instance();
@@ -618,7 +636,7 @@ FROM ""Customers"" AS c");
 FROM ""Customers"" AS c");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Nested_Function_Unwind_Client_Eval_Select_Instance()
         {
             base.Scalar_Nested_Function_Unwind_Client_Eval_Select_Instance();
@@ -719,7 +737,7 @@ FROM ""Customers"" AS c");
 FROM ""Customers"" AS c");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Nested_Function_BCL_UDF_Instance()
         {
             base.Scalar_Nested_Function_BCL_UDF_Instance();
@@ -741,7 +759,7 @@ LIMIT 2");
 FROM ""Customers"" AS c");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
         public override void Scalar_Nested_Function_UDF_BCL_Instance()
         {
             base.Scalar_Nested_Function_UDF_BCL_Instance();
@@ -752,6 +770,99 @@ FROM ""Customers"" AS c
 WHERE 3 = ""CustomerOrderCount""(abs(c.""Id""))
 LIMIT 2");
         }
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Anonymous_Collection_No_PK_Throws() => base.QF_Anonymous_Collection_No_PK_Throws();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Anonymous_Collection_No_IQueryable_In_Projection_Throws() => base.QF_Anonymous_Collection_No_IQueryable_In_Projection_Throws();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Stand_Alone() => base.QF_Stand_Alone();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Stand_Alone_Parameter() => base.QF_Stand_Alone_Parameter();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_CrossApply_Correlated_Select_QF_Type() => base.QF_CrossApply_Correlated_Select_QF_Type();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_CrossApply_Correlated_Select_Anonymous() => base.QF_CrossApply_Correlated_Select_Anonymous();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Select_Direct_In_Anonymous() => base.QF_Select_Direct_In_Anonymous();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Select_Correlated_Direct_With_Function_Query_Parameter_Correlated_In_Anonymous() => base.QF_Select_Correlated_Direct_With_Function_Query_Parameter_Correlated_In_Anonymous();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Select_Correlated_Subquery_In_Anonymous() => base.QF_Select_Correlated_Subquery_In_Anonymous();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Select_Correlated_Subquery_In_Anonymous_Nested_With_QF() => base.QF_Select_Correlated_Subquery_In_Anonymous_Nested_With_QF();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Select_Correlated_Subquery_In_Anonymous_Nested() => base.QF_Select_Correlated_Subquery_In_Anonymous_Nested();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Select_Correlated_Subquery_In_Anonymous_MultipleCollections() => base.QF_Select_Correlated_Subquery_In_Anonymous_MultipleCollections();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Select_NonCorrelated_Subquery_In_Anonymous() => base.QF_Select_NonCorrelated_Subquery_In_Anonymous();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Select_NonCorrelated_Subquery_In_Anonymous_Parameter() => base.QF_Select_NonCorrelated_Subquery_In_Anonymous_Parameter();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Correlated_Select_In_Anonymous() => base.QF_Correlated_Select_In_Anonymous();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_CrossApply_Correlated_Select_Result() => base.QF_CrossApply_Correlated_Select_Result();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_CrossJoin_Not_Correlated() => base.QF_CrossJoin_Not_Correlated();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_CrossJoin_Parameter() => base.QF_CrossJoin_Parameter();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Join() => base.QF_Join();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_LeftJoin_Select_Anonymous() => base.QF_LeftJoin_Select_Anonymous();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_LeftJoin_Select_Result() => base.QF_LeftJoin_Select_Result();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_OuterApply_Correlated_Select_QF() => base.QF_OuterApply_Correlated_Select_QF();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_OuterApply_Correlated_Select_Entity() => base.QF_OuterApply_Correlated_Select_Entity();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_OuterApply_Correlated_Select_Anonymous() => base.QF_OuterApply_Correlated_Select_Anonymous();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Nested() => base.QF_Nested();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Correlated_Nested_Func_Call() => base.QF_Correlated_Nested_Func_Call();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void QF_Correlated_Func_Call_With_Navigation() => base.QF_Correlated_Func_Call_With_Navigation();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void DbSet_mapped_to_function() => base.DbSet_mapped_to_function();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void TVF_backing_entity_type_mapped_to_view() => base.TVF_backing_entity_type_mapped_to_view();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void Udf_with_argument_being_comparison_to_null_parameter() => base.Udf_with_argument_being_comparison_to_null_parameter();
+
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/27")]
+        public override void Udf_with_argument_being_comparison_of_nullable_columns() => base.Udf_with_argument_being_comparison_of_nullable_columns();
 
         #endregion
 

@@ -21,7 +21,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             // Fixture.TestSqlLoggerFactory.SetTestOutputHelper(testOutputHelper);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void TsVectorParse_converted_to_cast()
         {
             using var context = CreateContext();
@@ -34,7 +34,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ArrayToTsVector()
         {
             using var context = CreateContext();
@@ -48,7 +48,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ArrayToTsVector_From_Columns_Throws_NotSupportedException()
         {
             using var context = CreateContext();
@@ -59,7 +59,7 @@ LIMIT 1");
                     .First());
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ToTsVector()
         {
             using var context = CreateContext();
@@ -72,7 +72,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ToTsVector_With_Config()
         {
             using var context = CreateContext();
@@ -85,7 +85,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ToTsVector_With_Config_From_Variable()
         {
             using var context = CreateContext();
@@ -101,7 +101,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void TsQueryParse_converted_to_cast()
         {
             using var context = CreateContext();
@@ -114,7 +114,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void PlainToTsQuery()
         {
             using var context = CreateContext();
@@ -127,7 +127,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void PlainToTsQuery_With_Config()
         {
             using var context = CreateContext();
@@ -140,7 +140,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void PlainToTsQuery_With_Config_From_Variable()
         {
             using var context = CreateContext();
@@ -156,7 +156,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void PhraseToTsQuery()
         {
             using var context = CreateContext();
@@ -169,7 +169,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void PhraseToTsQuery_With_Config()
         {
             using var context = CreateContext();
@@ -182,7 +182,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void PhraseToTsQuery_With_Config_From_Variable()
         {
             using var context = CreateContext();
@@ -198,7 +198,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ToTsQuery()
         {
             using var context = CreateContext();
@@ -211,7 +211,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ToTsQuery_With_Config()
         {
             using var context = CreateContext();
@@ -224,7 +224,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ToTsQuery_With_Config_From_Variable()
         {
             using var context = CreateContext();
@@ -240,7 +240,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [ConditionalFact]
+        [ConditionalFact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         [MinimumPostgresVersion(11, 0)]
         public void WebSearchToTsQuery()
         {
@@ -254,7 +254,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [ConditionalFact]
+        [ConditionalFact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         [MinimumPostgresVersion(11, 0)]
         public void WebSearchToTsQuery_With_Config()
         {
@@ -268,7 +268,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [ConditionalFact]
+        [ConditionalFact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         [MinimumPostgresVersion(11, 0)]
         public void WebSearchToTsQuery_With_Config_From_Variable()
         {
@@ -285,7 +285,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void TsQueryAnd()
         {
             using var context = CreateContext();
@@ -300,7 +300,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void TsQueryOr()
         {
             using var context = CreateContext();
@@ -315,7 +315,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void TsQueryToNegative()
         {
             using var context = CreateContext();
@@ -330,7 +330,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void TsQueryContains()
         {
             using var context = CreateContext();
@@ -345,7 +345,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void TsQueryIsContainedIn()
         {
             using var context = CreateContext();
@@ -360,7 +360,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void GetNodeCount()
         {
             using var context = CreateContext();
@@ -375,7 +375,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void GetQueryTree()
         {
             using var context = CreateContext();
@@ -390,7 +390,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void GetResultHeadline()
         {
             using var context = CreateContext();
@@ -405,7 +405,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void GetResultHeadline_With_Options()
         {
             using var context = CreateContext();
@@ -420,7 +420,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void GetResultHeadline_With_Config_And_Options()
         {
             using var context = CreateContext();
@@ -439,7 +439,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void GetResultHeadline_With_Config_From_Variable_And_Options()
         {
             using var context = CreateContext();
@@ -461,7 +461,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Rewrite()
         {
             using var context = CreateContext();
@@ -479,7 +479,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ToPhrase()
         {
             using var context = CreateContext();
@@ -494,7 +494,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ToPhrase_With_Distance()
         {
             using var context = CreateContext();
@@ -509,7 +509,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Matches_With_String()
         {
             using var context = CreateContext();
@@ -527,7 +527,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Matches_With_Tsquery()
         {
             using var context = CreateContext();
@@ -542,7 +542,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void TsVectorConcat()
         {
             using var context = CreateContext();
@@ -557,7 +557,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Setweight_With_Enum()
         {
             using var context = CreateContext();
@@ -572,7 +572,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Setweight_With_Enum_And_Lexemes()
         {
             using var context = CreateContext();
@@ -587,7 +587,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Setweight_With_Char()
         {
             using var context = CreateContext();
@@ -602,7 +602,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Setweight_With_Char_And_Lexemes()
         {
             using var context = CreateContext();
@@ -617,7 +617,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Delete_With_Single_Lexeme()
         {
             using var context = CreateContext();
@@ -632,7 +632,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Delete_With_Multiple_Lexemes()
         {
             using var context = CreateContext();
@@ -662,7 +662,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void GetLength()
         {
             using var context = CreateContext();
@@ -677,7 +677,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void ToStripped()
         {
             using var context = CreateContext();
@@ -692,7 +692,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Rank()
         {
             using var context = CreateContext();
@@ -707,7 +707,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Rank_With_Normalization()
         {
             using var context = CreateContext();
@@ -725,7 +725,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Rank_With_Weights()
         {
             using var context = CreateContext();
@@ -743,7 +743,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Rank_With_Weights_And_Normalization()
         {
             using var context = CreateContext();
@@ -762,7 +762,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void RankCoverDensity()
         {
             using var context = CreateContext();
@@ -777,7 +777,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void RankCoverDensity_With_Normalization()
         {
             using var context = CreateContext();
@@ -795,7 +795,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void RankCoverDensity_With_Weights()
         {
             using var context = CreateContext();
@@ -813,7 +813,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void RankCoverDensity_With_Weights_And_Normalization()
         {
             using var context = CreateContext();
@@ -832,7 +832,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Basic_where()
         {
             using var context = CreateContext();
@@ -842,7 +842,7 @@ LIMIT 1");
             Assert.True(count > 0);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Complex_query()
         {
             using var context = CreateContext();
@@ -859,7 +859,7 @@ LIMIT 1");
             Assert.Equal("<b>Accounting</b> <b>Manager</b>", headline);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Unaccent()
         {
             using var context = CreateContext();
@@ -872,7 +872,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Unaccent_with_constant_regdictionary()
         {
             using var context = CreateContext();
@@ -885,7 +885,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")]
         public void Unaccent_with_parameter_regdictionary()
         {
             using var context = CreateContext();
@@ -902,7 +902,7 @@ FROM ""Customers"" AS c
 LIMIT 1");
         }
 
-        [Fact] // #1652
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/23")] // #1652
         public void Match_and_boolean_operator_precedence()
         {
             using var context = CreateContext();

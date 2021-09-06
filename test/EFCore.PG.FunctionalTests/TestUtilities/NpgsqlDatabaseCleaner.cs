@@ -54,7 +54,9 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.TestUtilities
                     var conn = (NpgsqlConnection)connection.DbConnection;
                     DropExtensions(conn);
                     DropTypes(conn);
-                    DropFunctions(conn);
+                    //functions not yet implemented in cockroach
+                    //https://github.com/cockroachdb/cockroach/issues/17511?version=v21.1
+                    //DropFunctions(conn);
                     DropCollations(conn);
                 }
                 finally
@@ -106,7 +108,7 @@ WHERE typtype IN ('r', 'e') AND nspname <> 'pg_catalog'";
 
             if (userDefinedTypes.Any())
             {
-                var dropTypes = string.Concat(userDefinedTypes.Select(t => $@"DROP TYPE ""{t.Schema}"".""{t.Name}"" CASCADE;"));
+                var dropTypes = string.Concat(userDefinedTypes.Select(t => $@"DROP TYPE ""{t.Schema}"".""{t.Name}"";"));
                 using var cmd = new NpgsqlCommand(dropTypes, conn);
                 cmd.ExecuteNonQuery();
             }

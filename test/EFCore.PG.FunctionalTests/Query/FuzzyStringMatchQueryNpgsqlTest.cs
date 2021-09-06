@@ -29,7 +29,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
 
         #region FunctionTests
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/14")]
         public void FuzzyStringMatchSoundex()
         {
             using var context = CreateContext();
@@ -40,7 +40,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"soundex(f.""Text"")");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/14")]
         public void FuzzyStringMatchDifference()
         {
             using var context = CreateContext();
@@ -51,7 +51,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"difference(f.""Text"", 'target')");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/14")]
         public void FuzzyStringMatchLevenshtein()
         {
             using var context = CreateContext();
@@ -62,7 +62,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"levenshtein(f.""Text"", 'target')");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/14")]
         public void FuzzyStringMatchLevenshtein_With_Costs()
         {
             using var context = CreateContext();
@@ -73,7 +73,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"levenshtein(f.""Text"", 'target', 1, 2, 3)");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/14")]
         public void FuzzyStringMatchLevenshteinLessEqual()
         {
             using var context = CreateContext();
@@ -84,7 +84,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"levenshtein_less_equal(f.""Text"", 'target', 5)");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/14")]
         public void FuzzyStringMatchLevenshteinLessEqual_With_Costs()
         {
             using var context = CreateContext();
@@ -95,7 +95,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"levenshtein_less_equal(f.""Text"", 'target', 1, 2, 3, 5)");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/14")]
         public void FuzzyStringMatchMetaphone()
         {
             using var context = CreateContext();
@@ -106,7 +106,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"metaphone(f.""Text"", 6)");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/14")]
         public void FuzzyStringMatchDoubleMetaphone()
         {
             using var context = CreateContext();
@@ -117,7 +117,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"dmetaphone(f.""Text"")");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/14")]
         public void FuzzyStringMatchDoubleMetaphoneAlt()
         {
             using var context = CreateContext();

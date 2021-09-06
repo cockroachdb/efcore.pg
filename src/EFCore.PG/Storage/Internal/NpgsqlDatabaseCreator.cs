@@ -210,7 +210,9 @@ WHERE
         }
 
         // Login failed is thrown when database does not exist (See Issue #776)
-        private static bool IsDoesNotExist(PostgresException exception) => exception.SqlState == "3D000";
+        // on cockroach 21.2 we are receiving "relation "pg_type" does not exist" type of error when db does not exist. see https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/29 for details
+        private static bool IsDoesNotExist(PostgresException exception) => exception.SqlState == "3D000" 
+                                                                           || (exception.SqlState == "42P01" && exception.MessageText == "relation \"pg_type\" does not exist") ;
 
         public override void Delete()
         {

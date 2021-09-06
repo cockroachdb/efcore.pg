@@ -30,7 +30,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
 
         #region Roundtrip
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Roundtrip()
         {
             using var ctx = CreateContext();
@@ -46,7 +46,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
 
         #region Indexers
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_index_with_constant()
         {
             using var ctx = CreateContext();
@@ -63,7 +63,7 @@ WHERE s.""IntArray""[1] = 3
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void List_index_with_constant()
         {
             using var ctx = CreateContext();
@@ -80,7 +80,7 @@ WHERE s.""IntList""[1] = 3
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Nullable_array_index_with_constant()
         {
             using var ctx = CreateContext();
@@ -97,7 +97,7 @@ WHERE s.""NullableIntArray""[1] = 3
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Nullable_list_index_with_constant()
         {
             using var ctx = CreateContext();
@@ -114,7 +114,7 @@ WHERE s.""NullableIntList""[1] = 3
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Index_with_non_constant()
         {
             using var ctx = CreateContext();
@@ -135,7 +135,7 @@ WHERE s.""IntArray""[@__x_0 + 1] = 3
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void List_index_with_non_constant()
         {
             using var ctx = CreateContext();
@@ -160,7 +160,7 @@ LIMIT 2");
 
         #region SequenceEqual
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void SequenceEqual_with_parameter(bool list)
         {
@@ -182,7 +182,7 @@ WHERE s.""IntArray"" = @__arr_0
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void SequenceEqual_with_array_literal(bool list)
         {
@@ -201,7 +201,7 @@ WHERE s.""IntArray"" = ARRAY[3,4]::integer[]
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void SequenceEqual_over_nullable_with_parameter(bool list)
         {
@@ -229,7 +229,7 @@ LIMIT 2");
 
         // See also tests in NorthwindMiscellaneousQueryNpgsqlTest
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Array_column_Any_equality_operator(bool list)
         {
@@ -249,7 +249,7 @@ WHERE s.""StringArray"" @> ARRAY['3']::text[]
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Array_column_Any_Equals(bool list)
         {
@@ -269,7 +269,7 @@ WHERE s.""StringArray"" @> ARRAY['3']::text[]
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Array_column_Contains_literal_item(bool list)
         {
@@ -288,7 +288,7 @@ WHERE s.""IntArray"" @> ARRAY[3]::integer[]
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Array_column_Contains_parameter_item(bool list)
         {
@@ -311,7 +311,7 @@ WHERE s.""IntArray"" @> ARRAY[@__p_0]::integer[]
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Array_column_Contains_column_item(bool list)
         {
@@ -330,7 +330,7 @@ WHERE s.""IntArray"" @> ARRAY[s.""Id"" + 2]::integer[]
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Array_column_Contains_null_constant(bool list)
         {
@@ -349,7 +349,7 @@ WHERE (array_position(s.""StringArray"", NULL) IS NOT NULL)
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Array_column_Contains_null_parameter_does_not_work(bool list)
         {
@@ -370,7 +370,7 @@ FROM ""SomeEntities"" AS s
 WHERE s.""StringArray"" @> ARRAY[NULL]::text[]");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Nullable_array_column_Contains_literal_item(bool list)
         {
@@ -389,7 +389,7 @@ WHERE s.""NullableIntArray"" @> ARRAY[3]::integer[]
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_constant_Contains()
         {
             using var ctx = CreateContext();
@@ -406,7 +406,7 @@ WHERE s.""NullableText"" IN ('foo', 'xxx')
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_param_Contains_nullable_column()
         {
             using var ctx = CreateContext();
@@ -426,7 +426,7 @@ WHERE s.""NullableText"" = ANY (@__array_0) OR ((s.""NullableText"" IS NULL) AND
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_param_Contains_non_nullable_column()
         {
             using var ctx = CreateContext();
@@ -446,7 +446,7 @@ WHERE s.""Id"" = ANY (@__array_0)
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_param_with_null_Contains_non_nullable_not_found()
         {
             using var ctx = CreateContext();
@@ -462,7 +462,7 @@ FROM ""SomeEntities"" AS s
 WHERE s.""NonNullableText"" = ANY (@__array_0)");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_param_with_null_Contains_non_nullable_not_found_negated()
         {
             using var ctx = CreateContext();
@@ -479,7 +479,7 @@ FROM ""SomeEntities"" AS s
 WHERE NOT (s.""NonNullableText"" = ANY (@__array_0) AND (s.""NonNullableText"" = ANY (@__array_0) IS NOT NULL))");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_param_with_null_Contains_nullable_not_found()
         {
             using var ctx = CreateContext();
@@ -495,7 +495,7 @@ FROM ""SomeEntities"" AS s
 WHERE s.""NullableText"" = ANY (@__array_0) OR ((s.""NullableText"" IS NULL) AND (array_position(@__array_0, NULL) IS NOT NULL))");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_param_with_null_Contains_nullable_not_found_negated()
         {
             using var ctx = CreateContext();
@@ -511,7 +511,7 @@ FROM ""SomeEntities"" AS s
 WHERE NOT (s.""NullableText"" = ANY (@__array_0) AND (s.""NullableText"" = ANY (@__array_0) IS NOT NULL)) AND ((s.""NullableText"" IS NOT NULL) OR (array_position(@__array_0, NULL) IS NULL))");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void List_param_Contains_non_nullable_column()
         {
             using var ctx = CreateContext();
@@ -531,7 +531,7 @@ WHERE s.""Id"" = ANY (@__list_0)
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_param_Contains_value_converted_column()
         {
             using var ctx = CreateContext();
@@ -551,7 +551,7 @@ WHERE s.""ValueConvertedGuid"" = ANY (@__list_0)
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void List_param_Contains_value_converted_column()
         {
             using var ctx = CreateContext();
@@ -571,7 +571,7 @@ WHERE s.""ValueConvertedGuid"" = ANY (@__list_0)
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Byte_array_parameter_contains_column()
         {
             using var ctx = CreateContext();
@@ -592,7 +592,7 @@ WHERE s.""Byte"" = ANY (@__values_0)
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Array_column_Contains_in_scalar_subquery(bool list)
         {
@@ -620,7 +620,7 @@ LIMIT 2");
 
         #region Length/Count
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void ArrayLength()
         {
             using var ctx = CreateContext();
@@ -637,7 +637,7 @@ WHERE cardinality(s.""IntArray"") = 2
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void NullableArrayLength()
         {
             using var ctx = CreateContext();
@@ -654,7 +654,7 @@ WHERE cardinality(s.""NullableIntArray"") = 3
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void ListCount()
         {
             using var ctx = CreateContext();
@@ -671,7 +671,7 @@ WHERE cardinality(s.""IntList"") = 2
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Array_Length_on_EF_Property()
         {
             using var ctx = CreateContext();
@@ -688,7 +688,7 @@ WHERE cardinality(s.""IntArray"") = 2
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Length_on_literal_not_translated()
         {
             using var ctx = CreateContext();
@@ -709,7 +709,7 @@ LIMIT 2");
 
         #region Any/All
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Any_no_predicate(bool list)
         {
@@ -726,7 +726,7 @@ FROM ""SomeEntities"" AS s
 WHERE cardinality(s.""IntArray"") > 0");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Any_like()
         {
             using var ctx = CreateContext();
@@ -744,7 +744,7 @@ WHERE s.""NullableText"" LIKE ANY (ARRAY['a%','b%','c%']::text[])
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Any_ilike()
         {
             using var ctx = CreateContext();
@@ -762,7 +762,7 @@ WHERE s.""NullableText"" ILIKE ANY (ARRAY['a%','b%','c%']::text[])
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Any_like_anonymous()
         {
             using var ctx = CreateContext();
@@ -786,7 +786,7 @@ FROM ""SomeEntities"" AS s
 WHERE s.""NullableText"" LIKE ANY (@__patterns_0)");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void All_like()
         {
             using var ctx = CreateContext();
@@ -804,7 +804,7 @@ WHERE s.""NullableText"" LIKE ALL (ARRAY['b%','%r']::text[])
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void All_ilike()
         {
             using var ctx = CreateContext();
@@ -822,7 +822,7 @@ WHERE s.""NullableText"" ILIKE ALL (ARRAY['B%','%r']::text[])
 LIMIT 2");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Any_Contains_on_constant_array(bool list)
         {
@@ -852,7 +852,7 @@ FROM ""SomeEntities"" AS s
 WHERE ARRAY[1,2]::integer[] && s.""IntArray""");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Any_Contains_between_column_and_List(bool list)
         {
@@ -888,7 +888,7 @@ FROM ""SomeEntities"" AS s
 WHERE s.""IntArray"" && @__ints_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void Any_Contains_between_column_and_array(bool list)
         {
@@ -924,7 +924,7 @@ FROM ""SomeEntities"" AS s
 WHERE s.""IntArray"" && @__ints_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public void All_Contains(bool list)
         {
@@ -954,7 +954,7 @@ FROM ""SomeEntities"" AS s
 WHERE ARRAY[4,5,6]::integer[] <@ s.""IntArray""");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         [MemberData(nameof(IsListData))]
         public Task Any_like_column(bool list)
         {
@@ -970,7 +970,7 @@ WHERE ARRAY[4,5,6]::integer[] <@ s.""IntArray""");
 
         #region bytea
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/16")]
         public void Index_bytea_with_constant()
         {
             using var ctx = CreateContext();

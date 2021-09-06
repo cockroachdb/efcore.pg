@@ -23,7 +23,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
 
         #region Operators
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeContainsRange(NpgsqlRange<int> range)
         {
@@ -35,7 +35,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" @> @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeDoesNotContainRange(NpgsqlRange<int> range)
         {
@@ -47,7 +47,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"WHERE NOT (r.""Range"" @> @__range_0)");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(IntegerTheoryData))]
         public void RangeContainsValue(int value)
         {
@@ -59,7 +59,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" @> @__value_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(IntegerTheoryData))]
         public void RangeDoesNotContainValue(int value)
         {
@@ -71,7 +71,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"WHERE NOT (r.""Range"" @> @__value_0)");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeContainedByRange(NpgsqlRange<int> range)
         {
@@ -83,7 +83,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"@__range_0 <@ r.""Range""");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeNotContainedByRange(NpgsqlRange<int> range)
         {
@@ -95,7 +95,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"WHERE NOT (@__range_0 <@ r.""Range"")");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeEqualsRange_Operator(NpgsqlRange<int> range)
         {
@@ -107,7 +107,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" = @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeEqualsRange_Method(NpgsqlRange<int> range)
         {
@@ -119,7 +119,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" = @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeDoesNotEqualsRange_Operator(NpgsqlRange<int> range)
         {
@@ -131,7 +131,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" <> @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeDoesNotEqualsRange_Method(NpgsqlRange<int> range)
         {
@@ -143,7 +143,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" <> @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeOverlapsRange(NpgsqlRange<int> range)
         {
@@ -155,7 +155,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" && @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeDoesNotOverlapRange(NpgsqlRange<int> range)
         {
@@ -167,7 +167,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"WHERE NOT (r.""Range"" && @__range_0)");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeIsStrictlyLeftOfRange(NpgsqlRange<int> range)
         {
@@ -179,7 +179,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" << @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeIsNotStrictlyLeftOfRange(NpgsqlRange<int> range)
         {
@@ -191,7 +191,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"WHERE NOT (r.""Range"" << @__range_0)");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeIsStrictlyRightOfRange(NpgsqlRange<int> range)
         {
@@ -203,7 +203,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" >> @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeIsNotStrictlyRightOfRange(NpgsqlRange<int> range)
         {
@@ -215,7 +215,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"WHERE NOT (r.""Range"" >> @__range_0)");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeDoesNotExtendLeftOfRange(NpgsqlRange<int> range)
         {
@@ -227,7 +227,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" &> @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeDoesExtendLeftOfRange(NpgsqlRange<int> range)
         {
@@ -239,7 +239,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"WHERE NOT (r.""Range"" &> @__range_0)");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeDoesNotExtendRightOfRange(NpgsqlRange<int> range)
         {
@@ -251,7 +251,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" &< @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeDoesExtendRightOfRange(NpgsqlRange<int> range)
         {
@@ -263,7 +263,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"WHERE NOT (r.""Range"" &< @__range_0)");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeIsAdjacentToRange(NpgsqlRange<int> range)
         {
@@ -275,7 +275,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" -|- @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeIsNotAdjacentToRange(NpgsqlRange<int> range)
         {
@@ -287,7 +287,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"WHERE NOT (r.""Range"" -|- @__range_0)");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeUnionRange(NpgsqlRange<int> range)
         {
@@ -299,7 +299,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" + @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeIntersectsRange(NpgsqlRange<int> range)
         {
@@ -311,7 +311,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"r.""Range"" * @__range_0");
         }
 
-        [Theory]
+        [Theory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         [MemberData(nameof(RangeTheoryData))]
         public void RangeExceptRange(NpgsqlRange<int> range)
         {
@@ -334,7 +334,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
 
         #region User-defined ranges
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void UserDefined()
         {
             using var context = CreateContext();
@@ -344,7 +344,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             Assert.Equal(10, e.FloatRange.UpperBound);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void UserDefinedSchemaQualified()
         {
             using var context = CreateContext();
@@ -359,7 +359,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
 
         #region Functions
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void RangeLowerBound()
         {
             using var context = CreateContext();
@@ -368,7 +368,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"COALESCE(lower(r.""Range""), 0)");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void RangeUpperBound()
         {
             using var context = CreateContext();
@@ -377,7 +377,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"COALESCE(upper(r.""Range""), 0)");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void RangeIsEmpty()
         {
             using var context = CreateContext();
@@ -386,7 +386,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"isempty(r.""Range"")");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void RangeLowerBoundIsInclusive()
         {
             using var context = CreateContext();
@@ -395,7 +395,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"lower_inc(r.""Range"")");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void RangeUpperBoundIsInclusive()
         {
             using var context = CreateContext();
@@ -404,7 +404,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"upper_inc(r.""Range"")");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void RangeLowerBoundInfinite()
         {
             using var context = CreateContext();
@@ -413,7 +413,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"lower_inf(r.""Range"")");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void RangeUpperBoundInfinite()
         {
             using var context = CreateContext();
@@ -422,7 +422,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             AssertContainsSql(@"upper_inf(r.""Range"")");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void RangeMergeRange()
         {
             using var context = CreateContext();

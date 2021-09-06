@@ -496,6 +496,7 @@ ALTER TABLE ""People"" RESET (user_catalog_table);");
                 @"ALTER TABLE ""People"" ADD ""Sum"" integer NOT NULL DEFAULT (1 + 2);");
         }
 
+        [ConditionalTheory(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/32")]
         public override async Task Add_column_with_computedSql(bool? stored)
         {
             if (TestEnvironment.PostgresVersion.IsUnder(12))
@@ -1901,6 +1902,7 @@ DROP SEQUENCE ""People_Id_old_seq"";");
                 @"");
         }
 
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/35")]
         public override async Task Add_foreign_key_with_name()
         {
             await base.Add_foreign_key_with_name();

@@ -201,7 +201,11 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.TestUtilities
             string PreExecution(IRelationalConnection connection)
             {
                 string errorNumber = null;
-                var testConnection = (TestNpgsqlConnection)connection;
+                var testConnection =  connection as TestNpgsqlConnection;
+                if (testConnection == null)
+                {
+                    return null;
+                }
 
                 testConnection.ExecutionCount++;
                 if (testConnection.ExecutionFailures.Count > 0)

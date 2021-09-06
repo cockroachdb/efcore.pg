@@ -80,23 +80,32 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.TestUtilities
 
         protected override void Initialize(Func<DbContext> createContext, Action<DbContext> seed, Action<DbContext> clean)
         {
-            if (CreateDatabase(clean))
+            if (!DatabaseExists(Name))
             {
                 if (_scriptPath != null)
                 {
+                    CreateDatabase(clean);
                     ExecuteScript(_scriptPath);
                 }
                 else
                 {
                     using (var context = createContext())
                     {
-                        context.Database.EnsureCreatedResiliently();
-                        seed?.Invoke(context);
+                        try
+                        {
+                            context.Database.EnsureCreatedResiliently();
+                            seed?.Invoke(context);
+                        }
+                        catch (Exception)
+                        {
+                            DeleteDatabase();
+                            throw;
+                        }
                     }
                 }
-
-                if (_additionalSql != null)
-                    Execute(Connection, command => command.ExecuteNonQuery(), _additionalSql);
+                // TODO Check this out properly
+                // if (_additionalSql != null)
+                //     Execute(Connection, command => command.ExecuteNonQuery(), _additionalSql);
             }
         }
 
@@ -139,6 +148,9 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.TestUtilities
                 }
 
                 ExecuteNonQuery(master, GetCreateDatabaseStatement(Name));
+                ExecuteNonQuery(master,
+                    @"SET CLUSTER SETTING sql.defaults.default_int_size = 4;
+                        SET CLUSTER SETTING sql.defaults.serial_normalization = sql_sequence_cached;");
                 WaitForExists((NpgsqlConnection)Connection);
             }
 
@@ -228,20 +240,11 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.TestUtilities
                 return;
             using (var master = new NpgsqlConnection(CreateAdminConnectionString()))
             {
-                ExecuteNonQuery(master, GetDisconnectDatabaseSql(Name));
                 ExecuteNonQuery(master, GetDropDatabaseSql(Name));
 
                 NpgsqlConnection.ClearAllPools();
             }
         }
-
-        // Kill all connection to the database
-        // TODO: Pre-9.2 PG has column name procid instead of pid
-        static string GetDisconnectDatabaseSql(string name) => $@"
-REVOKE CONNECT ON DATABASE ""{name}"" FROM PUBLIC;
-SELECT pg_terminate_backend (pg_stat_activity.pid)
-   FROM pg_stat_activity
-   WHERE datname = '{name}'";
 
         static string GetDropDatabaseSql(string name) => $@"DROP DATABASE ""{name}""";
 
@@ -413,7 +416,7 @@ SELECT pg_terminate_backend (pg_stat_activity.pid)
                 Database = name
             }.ConnectionString;
 
-        static string CreateAdminConnectionString() => CreateConnectionString("postgres");
+        static string CreateAdminConnectionString() => CreateConnectionString("system");
 
         public override void Clean(DbContext context)
             => context.Database.EnsureClean();

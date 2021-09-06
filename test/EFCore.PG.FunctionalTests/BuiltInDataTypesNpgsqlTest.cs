@@ -4,11 +4,13 @@ using System.Collections.Immutable;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.TestUtilities;
@@ -28,7 +30,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL
             //Fixture.TestSqlLoggerFactory.SetTestOutputHelper(testOutputHelper);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public void Sql_translation_uses_type_mapper_when_constant()
         {
             using var context = CreateContext();
@@ -45,7 +47,7 @@ FROM ""MappedNullableDataTypes"" AS m
 WHERE m.""TimeSpanAsTime"" = TIME '00:01:02'");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public void Sql_translation_uses_type_mapper_when_parameter()
         {
             using var context = CreateContext();
@@ -65,7 +67,7 @@ FROM ""MappedNullableDataTypes"" AS m
 WHERE m.""TimeSpanAsTime"" = @__timeSpan_0");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public virtual void Can_query_using_any_mapped_data_type()
         {
             using (var context = CreateContext())
@@ -287,7 +289,7 @@ WHERE m.""TimeSpanAsTime"" = @__timeSpan_0");
         }
 
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public virtual void Can_query_using_any_mapped_data_types_with_nulls()
         {
             using (var context = CreateContext())
@@ -445,7 +447,7 @@ WHERE m.""TimeSpanAsTime"" = @__timeSpan_0");
             }
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public virtual void Can_insert_and_read_back_all_mapped_data_types()
         {
             var entity = CreateMappedDataTypes(77);
@@ -627,7 +629,7 @@ WHERE m.""TimeSpanAsTime"" = @__timeSpan_0");
                 Mood = Mood.Sad
             };
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public virtual void Can_insert_and_read_back_all_mapped_data_types_set_to_null()
         {
             using (var context = CreateContext())
@@ -705,12 +707,34 @@ WHERE m.""TimeSpanAsTime"" = @__timeSpan_0");
             Assert.Null(entity.Mood);
         }
 
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_query_using_any_nullable_data_type() => base.Can_query_using_any_nullable_data_type();
+
         [Fact(Skip="https://github.com/aspnet/EntityFrameworkCore/issues/14159")]
         public override void Can_query_using_any_data_type_nullable_shadow() {}
 
         [Fact(Skip="https://github.com/aspnet/EntityFrameworkCore/issues/14159")]
         public override void Can_query_using_any_data_type_shadow() {}
 
+        [ConditionalFact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_query_using_any_nullable_data_type_as_literal() => base.Can_query_using_any_nullable_data_type_as_literal();
+
+        [ConditionalTheory(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override Task Can_filter_projection_with_captured_enum_variable(bool async) => base.Can_filter_projection_with_captured_enum_variable(async);
+
+        [ConditionalTheory(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override Task Can_filter_projection_with_inline_enum_variable(bool async) => base.Can_filter_projection_with_inline_enum_variable(async);
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_perform_query_with_max_length() => base.Can_perform_query_with_max_length();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_perform_query_with_ansi_strings_test() => base.Can_perform_query_with_ansi_strings_test();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_query_using_any_data_type() => base.Can_query_using_any_data_type();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public override void Can_query_with_null_parameters_using_any_nullable_data_type()
         {
             using (var context = CreateContext())
@@ -873,7 +897,61 @@ WHERE m.""TimeSpanAsTime"" = @__timeSpan_0");
             }
         }
 
-        [ConditionalFact]
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_all_non_nullable_data_types() => base.Can_insert_and_read_back_all_non_nullable_data_types();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_with_max_length_set() => base.Can_insert_and_read_with_max_length_set();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_with_binary_key() => base.Can_insert_and_read_back_with_binary_key();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_with_null_binary_foreign_key() => base.Can_insert_and_read_back_with_null_binary_foreign_key();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_with_string_key() => base.Can_insert_and_read_back_with_string_key();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_with_null_string_foreign_key() => base.Can_insert_and_read_back_with_null_string_foreign_key();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_all_nullable_data_types_with_values_set_to_null() => base.Can_insert_and_read_back_all_nullable_data_types_with_values_set_to_null();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_all_nullable_data_types_with_values_set_to_non_null() => base.Can_insert_and_read_back_all_nullable_data_types_with_values_set_to_non_null();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_object_backed_data_types() => base.Can_insert_and_read_back_object_backed_data_types();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_nullable_backed_data_types() => base.Can_insert_and_read_back_nullable_backed_data_types();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_and_read_back_non_nullable_backed_data_types() => base.Can_insert_and_read_back_non_nullable_backed_data_types();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_read_back_mapped_enum_from_collection_first_or_default() => base.Can_read_back_mapped_enum_from_collection_first_or_default();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_read_back_bool_mapped_as_int_through_navigation() => base.Can_read_back_bool_mapped_as_int_through_navigation();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_compare_enum_to_constant() => base.Can_compare_enum_to_constant();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_compare_enum_to_parameter() => base.Can_compare_enum_to_parameter();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Object_to_string_conversion() => base.Object_to_string_conversion();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Optional_datetime_reading_null_from_database() => base.Optional_datetime_reading_null_from_database();
+
+        [Fact(Skip="https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
+        public override void Can_insert_query_multiline_string() => base.Can_insert_query_multiline_string();
+
+        [ConditionalFact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public void Sum_Conversions()
         {
             using var context = CreateContext();
@@ -895,7 +973,7 @@ FROM ""MappedDataTypes"" AS m",
 FROM ""MappedDataTypes"" AS m");
         }
 
-        [ConditionalFact]
+        [ConditionalFact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public void Money_compare_constant()
         {
             using var context = CreateContext();
@@ -903,7 +981,7 @@ FROM ""MappedDataTypes"" AS m");
             _ = context.Set<MappedDataTypes>().Where(m => m.DecimalAsMoney > 3).ToList();
         }
 
-        [ConditionalFact]
+        [ConditionalFact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/10")]
         public void Money_compare_parameter()
         {
             using var context = CreateContext();

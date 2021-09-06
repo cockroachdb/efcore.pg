@@ -1,0 +1,10 @@
+version: "3.2"
+services:
+   
+    node_1:
+        container_name: node_1
+        image: cockroachdb/cockroach-unstable:v21.2.0-beta.2
+        command: start-single-node --insecure
+        ports:
+           - "26257:26257"
+           - "8080:8080"

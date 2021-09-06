@@ -1,0 +1,35 @@
+name: run-test
+
+on:
+  push:
+    branches:
+      - cockroach
+
+jobs:
+  Run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Starts containers
+        working-directory: ./test/infra
+        run: docker-compose up -d
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+      - name: Test
+        run: dotnet test --logger "trx"  --results-directory "test-results"
+        continue-on-error: true
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        with:
+          name: Tests
+          path: test-results/*.trx
+          reporter: dotnet-trx
+          list-suites: 'failed'
+          list-tests: 'failed'
+          fail-on-error: 'false'
+      - name: Cleanup containers
+        if: always()
+        working-directory: ./test/infra
+        run: docker-compose rm -s -v -f

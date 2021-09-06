@@ -22,7 +22,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             //Fixture.TestSqlLoggerFactory.SetTestOutputHelper(testOutputHelper);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void StartsWith_literal()
         {
             using var ctx = CreateContext();
@@ -36,7 +36,7 @@ WHERE (s.""CaseInsensitiveText"" IS NOT NULL) AND (s.""CaseInsensitiveText"" LIK
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void StartsWith_param_pattern()
         {
             using var ctx = CreateContext();
@@ -53,7 +53,7 @@ WHERE (@__param_0 = '') OR ((s.""CaseInsensitiveText"" IS NOT NULL) AND ((s.""Ca
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void StartsWith_param_instance()
         {
             using var ctx = CreateContext();
@@ -70,7 +70,7 @@ WHERE (s.""CaseInsensitiveText"" = '') OR ((s.""CaseInsensitiveText"" IS NOT NUL
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void EndsWith_literal()
         {
             using var ctx = CreateContext();
@@ -84,7 +84,7 @@ WHERE (s.""CaseInsensitiveText"" IS NOT NULL) AND (s.""CaseInsensitiveText"" LIK
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void EndsWith_param_pattern()
         {
             using var ctx = CreateContext();
@@ -101,7 +101,7 @@ WHERE (@__param_0 = '') OR ((s.""CaseInsensitiveText"" IS NOT NULL) AND (right(s
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void EndsWith_param_instance()
         {
             using var ctx = CreateContext();
@@ -118,7 +118,7 @@ WHERE (s.""CaseInsensitiveText"" = '') OR ((s.""CaseInsensitiveText"" IS NOT NUL
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void Contains_literal()
         {
             using var ctx = CreateContext();
@@ -132,7 +132,7 @@ WHERE strpos(s.""CaseInsensitiveText"", 'ometex') > 0
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void Contains_param_pattern()
         {
             using var ctx = CreateContext();
@@ -149,7 +149,7 @@ WHERE (@__param_0 = '') OR (strpos(s.""CaseInsensitiveText"", @__param_0) > 0)
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void Contains_param_instance()
         {
             using var ctx = CreateContext();
@@ -166,7 +166,7 @@ WHERE (s.""CaseInsensitiveText"" = '') OR (strpos(@__param_0, s.""CaseInsensitiv
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void IndexOf_literal()
         {
             using var ctx = CreateContext();
@@ -180,7 +180,7 @@ WHERE (strpos(s.""CaseInsensitiveText"", 'ometex') - 1) = 1
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void IndexOf_param_pattern()
         {
             using var ctx = CreateContext();
@@ -197,7 +197,7 @@ WHERE (strpos(s.""CaseInsensitiveText"", @__param_0) - 1) = 1
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void IndexOf_param_instance()
         {
             using var ctx = CreateContext();
@@ -214,7 +214,7 @@ WHERE (strpos(@__param_0, s.""CaseInsensitiveText"") - 1) = 5
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void Replace_literal()
         {
             using var ctx = CreateContext();
@@ -228,7 +228,7 @@ WHERE replace(s.""CaseInsensitiveText"", 'Te', 'Ne') = 'SomeNext'
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void Replace_param_pattern()
         {
             using var ctx = CreateContext();
@@ -245,7 +245,7 @@ WHERE replace(s.""CaseInsensitiveText"", @__param_0, 'Ne') = 'SomeNext'
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/13")]
         public void Replace_param_instance()
         {
             using var ctx = CreateContext();

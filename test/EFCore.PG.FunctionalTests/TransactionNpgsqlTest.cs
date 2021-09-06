@@ -35,7 +35,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL
 
         protected override bool AmbientTransactionsSupported => true;
 
-        protected override bool SnapshotSupported => true;
+        protected override bool SnapshotSupported => false;
 
         protected override bool DirtyReadsOccur => false;
 

@@ -16,3 +16,4 @@ artifacts/
 *.ide/
 TestResult.xml
 
+test/infra/data/*

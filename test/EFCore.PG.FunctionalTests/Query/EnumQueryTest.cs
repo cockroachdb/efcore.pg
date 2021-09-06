@@ -40,7 +40,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             var x = ctx.SomeEntities.Single(e => e.MappedEnum == MappedEnum.Sad);
             Assert.Equal(MappedEnum.Sad, x.MappedEnum);
 
-            AssertContainsInSql(@"WHERE s.""MappedEnum"" = 'sad'::test.mapped_enum");
+            AssertContainsInSql(@"WHERE s.""MappedEnum"" = 'sad'::mapped_enum");
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             var x = ctx.SomeEntities.Single(e => e.SchemaQualifiedEnum == SchemaQualifiedEnum.Happy);
             Assert.Equal(SchemaQualifiedEnum.Happy, x.SchemaQualifiedEnum);
 
-            AssertContainsInSql(@"WHERE s.""SchemaQualifiedEnum"" = 'Happy (PgName)'::test.schema_qualified_enum");
+            AssertContainsInSql(@"WHERE s.""SchemaQualifiedEnum"" = 'Happy (PgName)'::schema_qualified_enum");
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
                 @"@__sad_0='Sad' (DbType = Object)
 
 SELECT s.""Id"", s.""ByteEnum"", s.""EnumValue"", s.""InferredEnum"", s.""MappedEnum"", s.""SchemaQualifiedEnum"", s.""UnmappedByteEnum"", s.""UnmappedEnum""
-FROM test.""SomeEntities"" AS s
+FROM ""SomeEntities"" AS s
 WHERE s.""MappedEnum"" = @__sad_0
 LIMIT 2");
         }
@@ -83,7 +83,7 @@ LIMIT 2");
                 @"@__sad_0='1'
 
 SELECT s.""Id"", s.""ByteEnum"", s.""EnumValue"", s.""InferredEnum"", s.""MappedEnum"", s.""SchemaQualifiedEnum"", s.""UnmappedByteEnum"", s.""UnmappedEnum""
-FROM test.""SomeEntities"" AS s
+FROM ""SomeEntities"" AS s
 WHERE s.""UnmappedEnum"" = @__sad_0
 LIMIT 2");
         }
@@ -100,7 +100,7 @@ LIMIT 2");
                 @"@__sad_0='1'
 
 SELECT s.""Id"", s.""ByteEnum"", s.""EnumValue"", s.""InferredEnum"", s.""MappedEnum"", s.""SchemaQualifiedEnum"", s.""UnmappedByteEnum"", s.""UnmappedEnum""
-FROM test.""SomeEntities"" AS s
+FROM ""SomeEntities"" AS s
 WHERE s.""UnmappedEnum"" = @__sad_0
 LIMIT 2");
         }
@@ -117,7 +117,7 @@ LIMIT 2");
                 @"@__sad_0='Sad' (DbType = Object)
 
 SELECT s.""Id"", s.""ByteEnum"", s.""EnumValue"", s.""InferredEnum"", s.""MappedEnum"", s.""SchemaQualifiedEnum"", s.""UnmappedByteEnum"", s.""UnmappedEnum""
-FROM test.""SomeEntities"" AS s
+FROM ""SomeEntities"" AS s
 WHERE s.""MappedEnum"" = @__sad_0
 LIMIT 2");
         }
@@ -131,7 +131,7 @@ LIMIT 2");
 
             AssertSql(
                 @"SELECT s.""Id"", s.""ByteEnum"", s.""EnumValue"", s.""InferredEnum"", s.""MappedEnum"", s.""SchemaQualifiedEnum"", s.""UnmappedByteEnum"", s.""UnmappedEnum""
-FROM test.""SomeEntities"" AS s
+FROM ""SomeEntities"" AS s
 WHERE strpos(CAST(s.""MappedEnum"" AS text), 'sa') > 0
 LIMIT 2");
         }
@@ -148,7 +148,7 @@ LIMIT 2");
                 @"@__values_0='Npgsql.EntityFrameworkCore.PostgreSQL.Query.EnumQueryTest+ByteEnum[]' (DbType = Object)
 
 SELECT s.""Id"", s.""ByteEnum"", s.""EnumValue"", s.""InferredEnum"", s.""MappedEnum"", s.""SchemaQualifiedEnum"", s.""UnmappedByteEnum"", s.""UnmappedEnum""
-FROM test.""SomeEntities"" AS s
+FROM ""SomeEntities"" AS s
 WHERE s.""ByteEnum"" = ANY (@__values_0)
 LIMIT 2");
         }
@@ -166,7 +166,7 @@ LIMIT 2");
                 @"@__values_0='0x01' (DbType = Object)
 
 SELECT s.""Id"", s.""ByteEnum"", s.""EnumValue"", s.""InferredEnum"", s.""MappedEnum"", s.""SchemaQualifiedEnum"", s.""UnmappedByteEnum"", s.""UnmappedEnum""
-FROM test.""SomeEntities"" AS s
+FROM ""SomeEntities"" AS s
 WHERE s.""UnmappedByteEnum"" = ANY (@__values_0)
 LIMIT 2");
         }
@@ -194,10 +194,10 @@ LIMIT 2");
 
             static EnumContext()
             {
-                NpgsqlConnection.GlobalTypeMapper.MapEnum<MappedEnum>("test.mapped_enum");
-                NpgsqlConnection.GlobalTypeMapper.MapEnum<InferredEnum>("test.inferred_enum");
-                NpgsqlConnection.GlobalTypeMapper.MapEnum<ByteEnum>("test.byte_enum");
-                NpgsqlConnection.GlobalTypeMapper.MapEnum<SchemaQualifiedEnum>("test.schema_qualified_enum");
+                NpgsqlConnection.GlobalTypeMapper.MapEnum<MappedEnum>("mapped_enum");
+                NpgsqlConnection.GlobalTypeMapper.MapEnum<InferredEnum>("inferred_enum");
+                NpgsqlConnection.GlobalTypeMapper.MapEnum<ByteEnum>("byte_enum");
+                NpgsqlConnection.GlobalTypeMapper.MapEnum<SchemaQualifiedEnum>("schema_qualified_enum");
             }
 
             public EnumContext(DbContextOptions options) : base(options) {}
@@ -206,7 +206,6 @@ LIMIT 2");
                 => builder.HasPostgresEnum("mapped_enum", new[] { "happy", "sad" })
                           .HasPostgresEnum<InferredEnum>()
                           .HasPostgresEnum<ByteEnum>()
-                          .HasDefaultSchema("test")
                           .HasPostgresEnum<SchemaQualifiedEnum>();
 
             public static void Seed(EnumContext context)

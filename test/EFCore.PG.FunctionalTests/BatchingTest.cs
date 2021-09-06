@@ -205,7 +205,6 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL
                 Assert.Equal(expected.Id, actual.Id);
                 Assert.Equal(expected.Order, actual.Order);
                 Assert.Equal(expected.OwnerId, actual.OwnerId);
-                Assert.Equal(expected.Version, actual.Version);
             }
         }
 
@@ -233,18 +232,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL
                     b =>
                     {
                         b.Property(e => e.Id).ValueGeneratedOnAdd();
-                        b.Property(e => e.Version)
-                            .HasColumnName("xmin")
-                            .HasColumnType("xid")
-                            .ValueGeneratedOnAddOrUpdate()
-                            .IsConcurrencyToken();
                     });
-
-                modelBuilder.Entity<Blog>().Property(b => b.Version)
-                    .HasColumnName("xmin")
-                    .HasColumnType("xid")
-                    .ValueGeneratedOnAddOrUpdate()
-                    .IsConcurrencyToken();
             }
 
             // ReSharper disable once UnusedMember.Local
@@ -258,14 +246,12 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL
             public int Order { get; set; }
             public string OwnerId { get; set; }
             public Owner Owner { get; set; }
-            public uint Version { get; set; }
         }
 
         class Owner
         {
             public string Id { get; set; }
             public string Name { get; set; }
-            public uint Version { get; set; }
         }
 
         public class BatchingTestFixture : SharedStoreFixtureBase<PoolableDbContext>

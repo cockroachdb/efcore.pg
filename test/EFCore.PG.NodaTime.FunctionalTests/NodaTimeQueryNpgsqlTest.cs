@@ -23,7 +23,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL
 
         NodaTimeFixture Fixture { get; }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Operator()
         {
             using var ctx = CreateContext();
@@ -35,7 +35,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL
 
         #region Addition and subtraction
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Add_LocalDate_Period()
         {
             // Note: requires some special type inference logic because we're adding things of different types
@@ -46,7 +46,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL
             Assert.Contains(@"(n.""LocalDate"" + INTERVAL 'P1M') > n.""LocalDate""", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Subtract_Instant()
         {
             using var ctx = CreateContext();
@@ -63,7 +63,7 @@ WHERE ((n.""Instant"" + INTERVAL '1 00:00:00') - n.""Instant"") = INTERVAL '1 00
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Subtract_LocalDateTime()
         {
             using var ctx = CreateContext();
@@ -80,7 +80,7 @@ WHERE ((n.""LocalDateTime"" + INTERVAL 'P1D') - n.""LocalDateTime"") = INTERVAL 
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Subtract_ZonedDateTime()
         {
             using var ctx = CreateContext();
@@ -97,7 +97,7 @@ WHERE ((n.""ZonedDateTime"" + INTERVAL '1 00:00:00') - n.""ZonedDateTime"") = IN
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Subtract_LocalDate()
         {
             using var ctx = CreateContext();
@@ -114,7 +114,7 @@ WHERE MAKE_INTERVAL(days => n.""LocalDate2"" - n.""LocalDate"") = INTERVAL 'P1D'
 LIMIT 2");
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Subtract_LocalTime()
         {
             using var ctx = CreateContext();
@@ -135,7 +135,7 @@ LIMIT 2");
 
         #region LocalDateTime members
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDateTime_year_component()
         {
             using var ctx = CreateContext();
@@ -145,7 +145,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('year', n.""LocalDateTime"")::INT = 2018", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDateTime_month_component()
         {
             using var ctx = CreateContext();
@@ -155,7 +155,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('month', n.""LocalDateTime"")::INT = 4", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDateTime_day_of_year_component()
         {
             using var ctx = CreateContext();
@@ -165,7 +165,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('doy', n.""LocalDateTime"")::INT = 110", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDateTime_day_component()
         {
             using var ctx = CreateContext();
@@ -175,7 +175,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('day', n.""LocalDateTime"")::INT = 20", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDateTime_hour_component()
         {
             using var ctx = CreateContext();
@@ -185,7 +185,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('hour', n.""LocalDateTime"")::INT = 10", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDateTime_minute_component()
         {
             using var ctx = CreateContext();
@@ -195,7 +195,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('minute', n.""LocalDateTime"")::INT = 31", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDateTime_second_component()
         {
             using var ctx = CreateContext();
@@ -205,7 +205,7 @@ LIMIT 2");
             Assert.Contains(@"FLOOR(DATE_PART('second', n.""LocalDateTime""))::INT = 33", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDateTime_date_component()
         {
             using var ctx = CreateContext();
@@ -215,7 +215,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_TRUNC('day', n.""LocalDateTime"") = DATE '2018-04-20'", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDateTime_day_of_week_component()
         {
             using var ctx = CreateContext();
@@ -238,7 +238,7 @@ LIMIT 2");
 
         #region LocalDate members
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDate_year_component()
         {
             using var ctx = CreateContext();
@@ -248,7 +248,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('year', n.""LocalDate"")::INT = 2018", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDate_month_component()
         {
             using var ctx = CreateContext();
@@ -258,7 +258,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('month', n.""LocalDate"")::INT = 4", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDate_day_of_year_component()
         {
             using var ctx = CreateContext();
@@ -268,7 +268,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('doy', n.""LocalDate"")::INT = 110", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalDate_day_component()
         {
             using var ctx = CreateContext();
@@ -282,7 +282,7 @@ LIMIT 2");
 
         #region LocalTime members
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalTime_hour_component()
         {
             using var ctx = CreateContext();
@@ -292,7 +292,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('hour', n.""LocalTime"")::INT = 10", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalTime_minute_component()
         {
             using var ctx = CreateContext();
@@ -302,7 +302,7 @@ LIMIT 2");
             Assert.Contains(@"DATE_PART('minute', n.""LocalTime"")::INT = 31", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_LocalTime_second_component()
         {
             using var ctx = CreateContext();
@@ -316,7 +316,7 @@ LIMIT 2");
 
         #region Period
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Select_Period_year_component()
         {
             using var ctx = CreateContext();
@@ -408,7 +408,7 @@ LIMIT 2");
         }
 */
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Period_from_days()
         {
             using var ctx = CreateContext();
@@ -418,7 +418,7 @@ LIMIT 2");
             Assert.Contains(@"MAKE_INTERVAL(days => n.""Id"")", Sql);
         }
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void Period_from_seconds()
         {
             using var ctx = CreateContext();
@@ -432,7 +432,7 @@ LIMIT 2");
 
         #region Range
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void DateRange_Contains()
         {
             using var ctx = CreateContext();
@@ -445,7 +445,7 @@ LIMIT 2");
 
         #region GetCurrentInstant()
 
-        [Fact]
+        [Fact(Skip = "https://github.com/verygoodsoftwareorg/cockroach-efcore/issues/21")]
         public void GetCurrentInstant_from_Instance()
         {
             using var ctx = CreateContext();
